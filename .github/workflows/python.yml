@@ -1,0 +1,23 @@
+name: Python Docker Action
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  python-container:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12-slim
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Python version
+        run: python --version
+
+      - name: Run Python application
+        run: |
+          python -c "print('Hola desde un contenedor Docker con Python')"
+          python -c "print('GitHub Actions ejecutado correctamente')"
